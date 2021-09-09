@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import Image from 'next/image'
 import Head from 'next/head'
 import { SubscribeButton } from '../components/SubscribeButton'
 import { stripe } from '../services/stripe'
@@ -16,7 +17,7 @@ export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Home | ig.News</title> 
+        <title>Home | ig.News</title>
       </Head>
 
       <main className={styles.contentContainer}>
@@ -29,7 +30,7 @@ export default function Home({ product }: HomeProps) {
           </p>
             <SubscribeButton priceId={product.priceId} />
         </section>
-        <img src="/images/avatar.svg" alt="Girl coding" />
+        <Image src="/images/avatar.svg" alt="Girl coding" width="500px" height="500px"/>
       </main>
     </>
   )
@@ -46,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }).format( price.unit_amount / 100),
   }
 
-  return { 
+  return {
     props: {
       product,
     },
